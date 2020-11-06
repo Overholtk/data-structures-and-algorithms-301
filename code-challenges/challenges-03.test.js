@@ -18,7 +18,7 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const changeAllClassNames = () => {
-  $('#fruits').find('li').createClass('fruit');
+  $('#fruits').find('li').addClass('fruit');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -28,9 +28,15 @@ Write a function named sortBackwards that takes in an array of numbers and retur
 ------------------------------------------------------------------------------------------------ */
 
 const sortBackwards = (arr) => {
-  for(let i = 0; i < arr.length; i++){
-    return arr[i + 1] - arr[1];
-  }
+    let array = arr;
+    array.sort((a, b) => {
+      if (a > b) {
+        return -1;
+      } else {
+        return 1;
+      }
+    });
+    return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -44,9 +50,15 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetize = (arr) => {
-  for(let i = 0; i <arr.length; i++){
-    return arr[i + 1].toUpperCase() - arr[i].toUpperCase();
-  }
+  let array = arr;
+  array.sort((a, b) => {
+    if(a < b){
+      return -1;
+    } else {
+      return 1;
+    }
+  });
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -56,9 +68,15 @@ Write a function named sortByLength that takes in an array of strings and return
 ------------------------------------------------------------------------------------------------ */
 
 const sortByLength = (arr) => {
-  for(let i = 0; i <arr.length; i++){
-    return arr[i].length - arr[i+1].length;
+  let array = arr;
+  array.sort((a,b) => {
+  if(a.length < b.length){
+    return -1;
+  }else {
+    return 1;
   }
+  });
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
