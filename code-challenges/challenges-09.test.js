@@ -26,8 +26,9 @@ const createServer = () => {
   const app=express();
 
   // Routes go here
+
   app.get('/events', getCurrentEvents);
-  // Solution code here...
+
 
   var server = app.listen(3301, function () {
     var port = server.address().port;
@@ -161,6 +162,7 @@ const currentEvents = {
 }
 
 function getCurrentEvents(request, response){
+
   
 }
 
@@ -177,6 +179,7 @@ function Event(obj){
   img_url = obj.image;
   date = obj.published;
   title = obj.title;
+
 }
 
 /* ------------------------------------------------------------------------------------------------
