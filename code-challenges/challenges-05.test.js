@@ -43,8 +43,6 @@ const templateWithJQuery = () => {
   $(tempClone).find('h3').text('this.height');
   $(tempClone).find('p').text('this.eye_color');
 });
-  
-  
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -128,11 +126,13 @@ const gruffaloCrumble = {
 const listFoods = (recipe) => {
   let result = [];
   let ingredientsList = recipe.ingredients;
-  ingredientsList.forEach( (info, index ) => {
-    let currentIngredient = [info];
-    currentIngredient.slice()
-
-    });
+  ingredientsList.forEach(ingredient => {
+    let spaceOne =  ingredient.indexOf(' ');
+    let removeNum = ingredient.slice(spaceOne + 1, ingredient.length);
+    let spaceTwo = removeNum.indexOf(' ');
+    let finalIng = removeNum.slice(spaceTwo + 1, removeNum.length);
+    result.push(finalIng);
+  })
   return result;
 };
 
