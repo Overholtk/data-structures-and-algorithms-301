@@ -27,8 +27,6 @@ const createServer = () => {
 
   // Routes go here
   app.get('/events', getCurrentEvents);
-  // Solution code here...
-
   var server = app.listen(3301, function () {
     var port = server.address().port;
     console.log('Example app listening at port', port);
