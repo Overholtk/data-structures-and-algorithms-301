@@ -26,8 +26,8 @@ const createServer = () => {
   const app=express();
 
   // Routes go here
-
   app.get('/events', getCurrentEvents);
+  // Solution code here...
 
 
   var server = app.listen(3301, function () {
@@ -162,23 +162,22 @@ const currentEvents = {
 }
 
 function getCurrentEvents(request, response){
-
-  
-}
+  response.send(mapCurrentEvents());
+} 
 
 const mapCurrentEvents = () => {
-  currentEvents.news.map(function (n,i){
-    Event(i);
-  });
+  let arr = currentEvents.news;
+  let eventArray = arr.map(article => new Event(article));
+  return eventArray;
 }
 
 function Event(obj){
-  author = obj.author;
-  categories = obj.category;
-  summary = obj.category;
-  img_url = obj.image;
-  date = obj.published;
-  title = obj.title;
+    this.author = obj.author;
+    this.categories = obj.category;
+    this.summary = obj.description;
+    this.img_url = obj.image;
+    this.date = obj.published;
+    this.title = obj.title;
 
 }
 
@@ -191,7 +190,10 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
-  // Solution code here...
+  let elemNum = arr.reduce( (acc, value, idx) => {
+    return idx +1;
+  }, 0);
+  return elemNum;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -251,7 +253,11 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
+  let names = [];
+  arr.reduce( (accumulator, person, idx) => {
+    names.push(person.name);
+  }, 0)
+  return names;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -263,7 +269,12 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
-  // Solution code here...
+  let arr = str.split("");
+  console.log(arr);
+  let reversed = arr.reduce( (reversed, value, idx) => {
+    return value + reversed;
+  }, '')
+  return reversed;
 };
 
 /* ------------------------------------------------------------------------------------------------
