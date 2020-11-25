@@ -29,6 +29,7 @@ const createServer = () => {
   app.get('/events', getCurrentEvents);
   // Solution code here...
 
+
   var server = app.listen(3301, function () {
     var port = server.address().port;
     console.log('Example app listening at port', port);
@@ -177,6 +178,7 @@ function Event(obj){
     this.img_url = obj.image;
     this.date = obj.published;
     this.title = obj.title;
+
 }
 
 /* ------------------------------------------------------------------------------------------------
