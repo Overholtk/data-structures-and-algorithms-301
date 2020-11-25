@@ -70,13 +70,16 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const templatingWithMustache = () => {
-  let array = [];
-  array.push(Mustache.render('$', {"name": name}));
-  array.push(Mustache.render('$', {"spouse": spouse}));
-  array.push(Mustache.render('$', {"#children": children}));
-  array.push(Mustache.render('$', {"house": house}));
-  return array;
-
+  return characters.map((character => {
+    let template = $('#template').html();
+    let markup = Mustache.render(template, {
+      'name': character.name,
+      'spouse': character.spouse,
+      'children': character.children,
+      'house': character.house
+    })
+    return markup;
+  }));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -93,9 +96,8 @@ const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningT
 
 const getCourseKeys = (obj) => {
   let array = [];
-  let properties = Object.keys(obj);
-  properties.forEach( property =>{
-    array.push(obj[property]);
+  Object.keys(obj).forEach( property =>{
+    array.push(property);
   });
   return array;
 };
@@ -108,9 +110,9 @@ Write a function named getHouses that returns a new array containing the names o
 
 const getHouses = (arr) => {
   let houses = [];
-  arr.forEach( () => {
-    houses.push(this.house);
-  })
+  arr.forEach((obj => {
+    houses.push(obj.house);
+  }));
   return houses;
 };
 
@@ -128,11 +130,14 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   let hasChildren = false;
-  arr.forEach( () => {
-    if(arr.name === character){
-      let values = Object.values(this);
+  arr.forEach((char => {
+    if(char.name === character){
+      let values = Object.values(char);
+      if(values[2]){
+        hasChildren = true;
+      }
     }
-  });
+  }));
   return hasChildren;
 };
 
