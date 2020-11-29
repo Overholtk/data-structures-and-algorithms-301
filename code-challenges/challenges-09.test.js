@@ -27,7 +27,6 @@ const createServer = () => {
 
   // Routes go here
   app.get('/events', getCurrentEvents);
-  // Solution code here...
 
 
   var server = app.listen(3301, function () {
