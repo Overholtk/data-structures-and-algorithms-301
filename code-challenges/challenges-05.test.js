@@ -42,7 +42,6 @@ const templateWithJQuery = () => {
   $(tempClone).find('h2').text('character.name');
   $(tempClone).find('h3').text('character.height');
   $(tempClone).find('p').text('character.eye_color');
-  
 });
   
   
@@ -135,8 +134,8 @@ const listFoods = (recipe) => {
     let spaceTwo = slicedIngredientOne.indexOf(' ');
     let finalIngredient = slicedIngredientOne.slice(spaceTwo + 1, slicedIngredientOne.length);
     result.push(finalIngredient);
-    });
   return result;
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
