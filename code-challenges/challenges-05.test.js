@@ -37,11 +37,14 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const templateWithJQuery = () => {
-  starWarsPeople.forEach(() => {
-  let tempClone = $('#template').clone
-  $(tempClone).find('h2').text('this.name');
-  $(tempClone).find('h3').text('this.height');
-  $(tempClone).find('p').text('this.eye_color');
+  starWarsPeople.forEach((character) => {
+  let tempClone = $('#template').html();
+  let template = $('<section></section>');
+  template.html(tempClone);
+  $(template).find('h2').text(character.name);
+  $(template).find('h3').text(character.height);
+  $(template).find('p').text(character.eye_color);
+  $('main').append(template);
 });
   
   
@@ -128,10 +131,12 @@ const gruffaloCrumble = {
 const listFoods = (recipe) => {
   let result = [];
   let ingredientsList = recipe.ingredients;
-  ingredientsList.forEach( (info, index ) => {
-    let currentIngredient = [info];
-    currentIngredient.slice()
-
+  ingredientsList.forEach( (currentIngredient) => {
+    let spaceOne = currentIngredient.indexOf(' ');
+    let slicedIngredientOne = currentIngredient.slice(spaceOne + 1, currentIngredient.length);
+    let spaceTwo = slicedIngredientOne.indexOf(' ');
+    let finalIngredient = slicedIngredientOne.slice(spaceTwo + 1, slicedIngredientOne.length);
+    result.push(finalIngredient);
     });
   return result;
 };
