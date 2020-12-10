@@ -138,7 +138,7 @@ const listFoods = (recipe) => {
     let finalIngredient = slicedIngredientOne.slice(spaceTwo + 1, slicedIngredientOne.length);
     result.push(finalIngredient);
     });
-  
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
